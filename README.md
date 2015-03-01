@@ -1,3 +1,26 @@
 # myMVC
 
 A small example of a very slim mvc framework
+
+Thing you must do before before you can start:
+
+1. On your apache httpd.conf file, make sure to remvoe the '#' sign before the following line:
+Include conf/extra/httpd-vhosts.conf
+
+2. Set a virtual host to your public folder, allow apache access to your root folder.
+
+<Directory C:/your/root/folder>
+Order Deny,Allow   
+Allow from all 
+</Directory>
+
+
+<VirtualHost *:80>   
+DocumentRoot "C:/your/root/folder/public" 
+ServerName your.app.url
+</VirtualHost>
+
+3. If you are using virtual hosts add your site to the hosts file like this:
+127.0.0.1		your.app.url
+
+Remember, it can also be 127.0.0.2 or 3 or 4 .. you get the point.
