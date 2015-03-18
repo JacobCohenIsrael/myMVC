@@ -1,5 +1,5 @@
 <?php
-namespace JacobCohenIsrae\MyMVC\Controller;
+namespace JacobCohenIsrael\MyMVC\Controller;
 
 class TestController
 {
