@@ -1,9 +1,10 @@
 <?php
-use App\Http\Request;
+use JacobCohenIsrael\MyMVC\Http\Request;
+
 define('APP_ENV',       'development');
 define('APP_ROOT_PATH', realpath(__DIR__ . '/../'));
 
-require_once APP_ROOT_PATH . '/module/App/src/App/Http/Request.php';
+require_once APP_ROOT_PATH . '/vendor/autoload.php';
 
 $request = new Request();
 
@@ -15,17 +16,17 @@ $path = $request->path();
 $conf = [
     '/' => [
         'action' => 'index',
-        'controller'    => 'App\\Controller\\DefaultController',
+        'controller'    => 'JacobCohenIsrael\\MyMVC\\Controller\\DefaultController',
         'di' => '',
     ],  
     '/test' => [
         'action' => 'index',
-        'controller' => 'App\\Controller\\TestController',
+        'controller' => 'JacobCohenIsrael\\MyMVC\\Controller\\TestController',
         'di' => '',
     ],  
     '/test/something' => [
         'action' => 'something',
-        'controller' => 'App\\Controller\\TestController',
+        'controller' => 'JacobCohenIsrael\\MyMVC\\Controller\\TestController',
         'di' => '',
     ],  
 ];
@@ -37,8 +38,6 @@ if(!array_key_exists($path, $conf))
     die("Path does not exist");
 }
 $config = $conf[$path];
-$pathToController  = str_replace('\\', '/', $config['controller']);
-require_once APP_ROOT_PATH . '/module/App/src/' . $pathToController . '.php'; // Include the controller
 $controller = new $config['controller'](); // Initiate instance by controller name;
 $controller->$config['action'](); // Initiate the action
 

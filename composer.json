@@ -1,0 +1,12 @@
+{
+  "name" : "myMVC",
+  "autoload" : {
+    "psr-4" : {
+      "JacobCohenIsrael\\MyMVC\\" : "lib/MyMVC/src/"
+    }
+  },
+  "repositories" : [ {
+    "type" : "composer",
+    "url" : "https://packagist.org/"
+  } ]
+}

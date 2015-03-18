@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace JacobCohenIsrael\MyMVC\Controller;
 
 class DefaultController
 {

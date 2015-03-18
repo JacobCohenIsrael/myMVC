@@ -1,5 +1,5 @@
 <?php
-namespace App\Http;
+namespace JacobCohenIsrael\MyMVC\Http;
 
 class Request
 {
