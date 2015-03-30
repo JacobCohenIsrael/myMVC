@@ -1,6 +1,7 @@
 <?php
 namespace JacobCohenIsrael\MyMVC\Application;
 
+use JacobCohenIsrael\MyMVC\Http\Request;
 class ServiceManager
 {
     const CONF_ROUTE    = 'route';
@@ -62,5 +63,17 @@ class ServiceManager
     public function getConfRoutes()
     {
         return $this->getConf(ServiceManager::CONF_ROUTE);
+    }
+    
+    /**
+     * @return Request
+     */
+    public function getRequest()
+    {
+        if (!isset($this->cache['request']))
+        {
+            $this->cache['request'] = new Request();
+        }
+        return $this->cache['request'];
     }
 }
