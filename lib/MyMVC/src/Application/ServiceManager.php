@@ -2,6 +2,7 @@
 namespace JacobCohenIsrael\MyMVC\Application;
 
 use JacobCohenIsrael\MyMVC\Http\Request;
+use JacobCohenIsrael\MyMVC\Route\Router;
 class ServiceManager
 {
     const CONF_ROUTE    = 'route';
@@ -21,17 +22,17 @@ class ServiceManager
             '/' => [
                 'action' => 'index',
                 'controller'    => 'JacobCohenIsrael\\MyMVC\\Controller\\DefaultController',
-                'di' => '',
+                'di' => [],
             ],
             '/test' => [
                 'action' => 'index',
                 'controller' => 'JacobCohenIsrael\\MyMVC\\Controller\\TestController',
-                'di' => '',
+                'di' => [],
             ],
             '/test/something' => [
                 'action' => 'something',
                 'controller' => 'JacobCohenIsrael\\MyMVC\\Controller\\TestController',
-                'di' => '',
+                'di' => [],
             ],
         ]
     ];
@@ -68,12 +69,24 @@ class ServiceManager
     /**
      * @return Request
      */
-    public function getRequest()
+    public function request()
     {
-        if (!isset($this->cache['request']))
+        if (!isset($this->cache[__FUNCTION__]))
         {
-            $this->cache['request'] = new Request();
+            $this->cache[__FUNCTION__] = new Request();
         }
-        return $this->cache['request'];
+        return $this->cache[__FUNCTION__];
+    }
+    
+    /**
+     * @return Router
+     */
+    public function router()
+    {
+        if (!isset($this->cache[__FUNCTION__]))
+        {
+            $this->cache[__FUNCTION__] = new Router($this->request(), $this->getConfRoutes());
+        }
+        return $this->cache[__FUNCTION__];
     }
 }
